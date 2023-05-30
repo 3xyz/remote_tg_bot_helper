@@ -22,9 +22,9 @@ def general():
     disc_space = InlineKeyboardButton(text="Disc Space", callback_data="Disc Space")
     temp = InlineKeyboardButton(text="Temp", callback_data="Temp")
     back = InlineKeyboardButton(text="back", callback_data="menu")
-    markup.insert(cpu)
-    markup.insert(ram)
-    markup.insert(disc_space)
-    markup.insert(temp)
+    # markup.insert(cpu)
+    # markup.insert(ram)
+    # markup.insert(disc_space)
+    # markup.insert(temp)
     markup.insert(back)
     return markup

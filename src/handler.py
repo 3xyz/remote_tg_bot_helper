@@ -91,8 +91,9 @@ async def upload_file(call: CallbackQuery):
 
 
 @dp.message_handler(content_types=["document"], state=Upload.file)
-async def uploading_file(message: types.Message):
+async def uploading_file(message: types.Message, state: FSMContext):
     if message.from_user.id in ADMIN_IDS:
+        await state.finish()
         file_id = message.document.file_id
         file_name = message.document.file_name
         file = await bot.get_file(file_id)

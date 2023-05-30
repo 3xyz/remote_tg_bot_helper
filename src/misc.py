@@ -14,6 +14,11 @@ for admin_id in ADMIN_IDS:
     Dir[admin_id] = EXECUTE_PATH
 
 
+def serialize_path(text: str) -> str:
+    return re.sub(r" ", r"\ ", text)
+
+
+    
 def remove_color_tags(text: str) -> str:
     return re.sub(r"\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]", "", text)
 
@@ -134,6 +139,8 @@ def change_dir(path: str, user_id: int) -> int:
 
 def move_file_from_project(file_name, user_id):
     file_path = PROJECT_PATH + '/' + file_name
+    file_path = serialize_path(file_path)
     dest_path = Dir[user_id]
+    dest_path = serialize_path(dest_path)
     status = subprocess.run(f'mv {file_path} {dest_path}', shell=True).returncode
     return status

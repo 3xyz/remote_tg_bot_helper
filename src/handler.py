@@ -91,7 +91,7 @@ async def upload_file(call: CallbackQuery):
 
 
 @dp.message_handler(content_types=["document"], state=Upload.file)
-async def get_file(message: types.Message):
+async def uploading_file(message: types.Message):
     if message.from_user.id in ADMIN_IDS:
         file_id = message.document.file_id
         file_name = message.document.file_name
@@ -100,13 +100,13 @@ async def get_file(message: types.Message):
         await bot.download_file(file_path, file_name)
         status = misc.move_file_from_project(file_name, message.from_user.id)
         if status:
-            await menu_mes(message.from_user.id)
-        else:
             await menu_mes(message.from_user.id, 'Something went wrong')
+        else:
+            await menu_mes(message.from_user.id, 'Uploaded')
 
 
 @dp.message_handler(state=Download.file)
-async def getting_command(message: types.Message, state: FSMContext):
+async def getting_filename_for_sending(message: types.Message, state: FSMContext):
     if message.from_user.id in ADMIN_IDS:
         await state.finish()
         filename = message.text

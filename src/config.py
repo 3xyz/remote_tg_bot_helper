@@ -2,7 +2,7 @@ import configparser
 import os
 
 PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
-PROJECT_PATH = PROJECT_PATH[:-5]
+PROJECT_PATH = PROJECT_PATH[:-3]
 EXECUTE_PATH = os.getcwd()
 
 config = configparser.ConfigParser()

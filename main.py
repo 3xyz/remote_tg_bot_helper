@@ -18,8 +18,6 @@ __all__ = [
 
 # TEST: Eating first word after `ls` command (Only when file/path have space in name)
 
-# TODO: Create general statistic about: Check memory, CPU usage, ?
-
 async def on_startup(dp):
     loguru_setup()
     for admin_id in ADMIN_IDS:

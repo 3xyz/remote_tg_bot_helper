@@ -54,14 +54,6 @@ async def try_change_path(message: types.Message, state: FSMContext):
             await menu_mes(message.from_user.id, 'No such directory')
 
 
-@dp.callback_query_handler(text="General")
-async def cd(call: CallbackQuery):
-    if call.from_user.id in ADMIN_IDS:
-        kb = keyboard.general()
-        pwd = Dir[call.from_user.id]
-        await call.message.edit_text(f"`{pwd}`\n➖➖➖➖➖➖➖➖➖➖", reply_markup=kb, parse_mode="Markdown")
-
-
 @dp.callback_query_handler(text="Download file") 
 async def download_file(call: CallbackQuery):
     if call.from_user.id in ADMIN_IDS:

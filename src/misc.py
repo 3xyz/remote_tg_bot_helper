@@ -3,7 +3,6 @@ import re
 import subprocess
 
 from loguru import logger
-
 from src.config import ADMIN_IDS, PROJECT_PATH
 from src.config import EXECUTE_PATH
 
@@ -138,9 +137,11 @@ def change_dir(path: str, user_id: int) -> int:
 
 
 def move_file_from_project(file_name, user_id):
-    file_path = PROJECT_PATH + '/' + file_name
+    status = 0
+    file_path = PROJECT_PATH + file_name
     file_path = serialize_path(file_path)
     dest_path = Dir[user_id]
     dest_path = serialize_path(dest_path)
-    status = subprocess.run(f'mv {file_path} {dest_path}', shell=True).returncode
+    if PROJECT_PATH[:-1] != dest_path:
+        status = subprocess.run(f'mv {file_path} {dest_path}', shell=True).returncode
     return status

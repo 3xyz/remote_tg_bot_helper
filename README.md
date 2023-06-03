@@ -1,6 +1,8 @@
 # remote_tg_bot_helper
 This bot provides simple interface for remote interact with your system. Bot can be helpful if your system under NAT network.
 
+![](./Screenshot.png)
+
 # Installation
 
 ```sh

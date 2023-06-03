@@ -125,6 +125,6 @@ async def execute_randome_command(message: types.Message):
         )
         for part in messages:
             await bot.send_message(message.chat.id, part, parse_mode="Markdown")
-            sleep(1)
+            sleep(0.4)
         await menu_mes(message.from_user.id)
 

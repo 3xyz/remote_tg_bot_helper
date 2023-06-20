@@ -1,0 +1,12 @@
+[Unit]
+Description=Remote TG Bot Helper
+After=network.target
+
+[Service]
+User=kali
+Type=simple
+Restart=always
+ExecStart=/bin/bash /home/kali/Desktop/MyScripts/remote_tg_bot_helper/service/start.sh
+
+[Install]
+WantedBy=multi-user.target

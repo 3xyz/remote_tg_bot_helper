@@ -6,7 +6,7 @@ PROJECT_PATH = PROJECT_PATH[:-3]
 EXECUTE_PATH = os.getcwd()
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read(f'{PROJECT_PATH}/config.ini')
 
 BOT_TOKEN = config['bot']['TOKEN']
 ADMIN_IDS = list(map(lambda x: int(x), config['bot']['ADMIN_IDS'].split()))

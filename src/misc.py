@@ -17,7 +17,6 @@ def serialize_path(text: str) -> str:
     return re.sub(r" ", r"\ ", text)
 
 
-    
 def remove_color_tags(text: str) -> str:
     return re.sub(r"\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]", "", text)
 

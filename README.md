@@ -15,6 +15,10 @@ pip install -r requirements.txt
 mv config.ini.example config.ini
 # Creating link into PATH environment folder
 ln -s $(pwd)/main.py ~/local/bin/remote_tg_bot_helper
+# Setup systemd service
+ln -s $(pwd)/service/tg_helper.service /etc/systemd/system/tg_helper.service
+sudo systemctl start tg_helper
+sudo systemctl enable tg_helper
 ```
 
 Change bot token and telegram ID inside `config.ini`.

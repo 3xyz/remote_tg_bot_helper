@@ -6,7 +6,7 @@ After=network.target
 User=kali
 Type=simple
 Restart=always
-ExecStart=/bin/bash /home/kali/Desktop/MyScripts/remote_tg_bot_helper/service/start.sh
+ExecStart=/bin/bash /home/kali/Desktop/MyScripts/remote_tg_bot_helper/service/run_tg_bot.sh
 
 [Install]
 WantedBy=multi-user.target

@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 
-# TEST: Eating first word after `ls` command (Only when file/path have space in name)
+# TEST: Eating first line
 
 
 async def on_startup(dp):

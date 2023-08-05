@@ -1,0 +1,3 @@
+ln -s $(pwd)/service/tg_helper.service /etc/systemd/system/tg_helper.service
+systemctl start tg_helper
+systemctl enable tg_helper

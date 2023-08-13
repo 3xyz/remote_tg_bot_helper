@@ -3,9 +3,10 @@ import re
 import subprocess
 
 from loguru import logger
-from src.config import ADMIN_IDS, PROJECT_PATH
-from src.config import EXECUTE_PATH
 
+from src.config import ADMIN_IDS
+from src.config import EXECUTE_PATH
+from src.config import PROJECT_PATH
 
 Dir = {}
 
@@ -22,9 +23,8 @@ def remove_color_tags(text: str) -> str:
 
 
 def format_to_code(text: str) -> str:
-    print(text.split("\n"))
     if len(text.strip().split("\n")) > 1:
-        return "```" + text + "```"
+        return "```\n" + text + "```"
     else:
         return "`" + text + "`"
 
@@ -57,6 +57,7 @@ def execute_command(command: str, user_id) -> str:
         command_output = "Empty"
     command_output = clean_up(command_output)
     result += format_to_code(command_output)
+    print(result)
     return result
 
 
@@ -85,7 +86,6 @@ def split_message(message: str, limit: int = 3000) -> list[str]:
 
 
 def run_subprocess(command: str, pwd: str) -> tuple:
-    print(*command.split())
     proc = subprocess.run(
         [command],
         capture_output=True,
@@ -93,7 +93,6 @@ def run_subprocess(command: str, pwd: str) -> tuple:
         shell=True,
         cwd=pwd,
     )
-    print(proc)
     proc_out = proc.stdout
     proc_err = proc.stderr
     exit_code = proc.returncode
@@ -142,5 +141,6 @@ def move_file_from_project(file_name, user_id):
     dest_path = Dir[user_id]
     dest_path = serialize_path(dest_path)
     if PROJECT_PATH[:-1] != dest_path:
-        status = subprocess.run(f'mv {file_path} {dest_path}', shell=True).returncode
+        status = subprocess.run(f'mv {file_path} {dest_path}',
+                                shell=True).returncode
     return status

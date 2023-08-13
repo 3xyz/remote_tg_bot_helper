@@ -37,25 +37,6 @@ async def menu_mes(user_id, mes=''):
     await bot.send_message(user_id, f"`{pwd}`\n➖➖➖➖➖➖➖➖➖➖\n{mes}", reply_markup=kb, parse_mode="Markdown")
 
 
-# @dp.callback_query_handler(text="cd")
-# async def execute_command(call: CallbackQuery):
-#     if call.from_user.id in ADMIN_IDS:
-#         await call.message.edit_text("Write directory:")
-#         await Get.path.set()
-#
-#     
-# @dp.message_handler(state=Get.path)
-# async def try_change_path(message: types.Message, state: FSMContext):
-#     if message.from_user.id in ADMIN_IDS:
-#         await state.finish()
-#         path = message.text
-#         status = misc.change_dir(path, message.from_user.id)
-#         if status:
-#             await menu_mes(message.from_user.id)
-#         else:
-#             await menu_mes(message.from_user.id, 'No such directory')
-
-
 @dp.callback_query_handler(text="Download file") 
 async def download_file(call: CallbackQuery):
     if call.from_user.id in ADMIN_IDS:
